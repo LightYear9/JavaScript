@@ -2,13 +2,16 @@ const getUserChoice = userInput => {
     userInput = userInput.toLowerCase();
     if(userInput === 'rock' ||
     userInput === 'paper' ||
-    userInput === 'scissors')
+    userInput === 'scissors'||
+    userInput === 'bomb'
+    )
     {
       return userInput;
       }
       else
       {
         console.log('error');
+        return false;
       }
 
 }
@@ -27,23 +30,30 @@ const getComputerChoice = () => {
 }
 
 const determineWinner = (userChoice, computerChoice) => {
-    if(userChoice === computerChoice)
-        {return 'It\'s a tie!';}
+
+    //bomb is secret cheat code
+    if(userChoice==='bomb')
+        return 'Player wins!';
+    else if(userChoice === computerChoice)
+        return 'It\'s a tie!';
     else if(userChoice === 'rock' && computerChoice === 'paper')
-        {return 'computer wins!';}
+        return 'computer wins!';
     else if(userChoice === 'paper' && computerChoice === 'scissors')
-        {return 'computer wins!';}
+        return 'computer wins!';
     else if(userChoice === 'scissors' && computerChoice === 'rock')
-        {return 'computer wins!';}
+        return 'computer wins!';
     else{
-        {return 'Player wins!';}
+        return 'Player wins!';
      }
 }
 
-var userChoice = getUserChoice('scissors');
+
+var userChoice = getUserChoice('bomb');
 var computerChoice = getComputerChoice();
+
+//if(userChoice === true){
 console.log('Computer chooses: ' + computerChoice);
 console.log('Player chooses: '+ userChoice);
 console.log(determineWinner(userChoice, computerChoice));
-
-//console.log(getUserChoice('mock'));
+//}
+//else{ console.log('No Winner!');}
